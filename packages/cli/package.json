@@ -1,0 +1,36 @@
+{
+  "name": "app-store-submission-auditor",
+  "version": "0.2.0",
+  "description": "A CLI companion for auditing Apple App Store submission readiness.",
+  "type": "module",
+  "bin": {
+    "app-store-submission-auditor": "dist/index.js",
+    "appssa": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "scan": "tsx src/index.ts scan",
+    "test": "npm run build && node dist/index.js scan ../.. --format json"
+  },
+  "keywords": [
+    "app-store",
+    "app-review",
+    "ios",
+    "macos",
+    "claude-code",
+    "codex",
+    "ai-agents",
+    "developer-tools"
+  ],
+  "author": "Yash Chaudhary",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}
