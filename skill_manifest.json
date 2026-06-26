@@ -1,0 +1,15 @@
+{
+  "name": "app-store-submission-auditor",
+  "version": "1.0.2",
+  "created": "2026-06-25T23:58:33",
+  "description": "Reusable generic skill pack for Apple App Store submission readiness audits in Claude Code, Codex, and terminal agents.",
+  "entrypoints": [
+    "SKILL.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "scripts/app_store_static_scan.py",
+    "references/source-index.md"
+  ],
+  "mode": "read-only by default",
+  "updated": "2026-06-26T02:15:00"
+}
