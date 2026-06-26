@@ -1,0 +1,108 @@
+skill:
+  name: app-store-submission-auditor
+  last_verified: 2026-06-26
+  source_priority:
+    - Apple App Store Review Guidelines
+    - Apple App Store Connect Help
+    - Apple Developer Support / News / Upcoming Requirements
+    - Local repository evidence
+    - Bundled source index
+
+severity:
+  P0_BLOCKER: "Likely rejection, invalid binary, legal/safety blocker, or missing mandatory flow."
+  P1_HIGH: "High review risk or evidence gap that often causes rejection/back-and-forth."
+  P2_MEDIUM: "Should fix before launch, may not block every review."
+  P3_NICE_TO_HAVE: "Launch quality or maintainability improvement."
+
+checks:
+  app_completeness:
+    priority: P0_BLOCKER
+    apple_area: "Guideline 2.1 App Completeness"
+    verify:
+      - "Final binary, no placeholder text or empty websites."
+      - "App tested on device for bugs/stability."
+      - "Demo account or demo mode for account-gated features."
+      - "Backend live and accessible during review."
+      - "IAP products visible, complete, and functional."
+  accurate_metadata:
+    priority: P1_HIGH
+    apple_area: "Guideline 2.3 Accurate Metadata"
+    verify:
+      - "Screenshots/previews reflect actual app functionality."
+      - "Description, subtitle, keywords, What’s New are truthful."
+      - "Support URL and privacy policy URL work."
+      - "No trademark spam or misleading future-feature claims."
+  privacy:
+    priority: P0_BLOCKER
+    apple_area: "Guideline 5.1 + App Privacy"
+    verify:
+      - "Privacy policy exists in app and App Store Connect metadata."
+      - "App Privacy answers cover first-party and third-party SDK data collection."
+      - "Purpose strings explain why each permission is needed."
+      - "ATT prompt exists if tracking occurs."
+      - "No fingerprinting or undisclosed cross-app tracking."
+  sdk_privacy:
+    priority: P0_BLOCKER
+    apple_area: "Third-party SDK requirements / privacy manifests / signatures"
+    verify:
+      - "PrivacyInfo.xcprivacy exists where required."
+      - "Required-reason APIs are declared where used."
+      - "SDK inventory is documented."
+      - "Third-party code data collection is disclosed in privacy labels."
+  account_deletion:
+    priority: P0_BLOCKER
+    apple_area: "Guideline 5.1.1(v)"
+    verify:
+      - "If account creation exists, deletion can be initiated inside the app."
+      - "Deletion removes full account and associated personal data unless retention legally required."
+      - "Deletion is not only deactivation."
+      - "Sign in with Apple token revocation considered when applicable."
+  login:
+    priority: P1_HIGH
+    apple_area: "Guideline 4.8 Login Services"
+    verify:
+      - "If third-party/social login is primary, equivalent privacy-friendly login exists unless exception applies."
+      - "Login is not forced when app does not need an account."
+      - "Demo credentials are included for review."
+  payments:
+    priority: P0_BLOCKER
+    apple_area: "Guideline 3.1.1 In-App Purchase"
+    verify:
+      - "Digital goods/features/subscriptions use IAP unless documented exception applies."
+      - "Restore purchases implemented for restorable purchases."
+      - "Purchased credits/currencies do not expire where prohibited."
+      - "Subscription disclosure is clear."
+  signing_entitlements:
+    priority: P1_HIGH
+    apple_area: "Certificates, provisioning, capabilities, managed entitlements"
+    verify:
+      - "Bundle ID, App ID, entitlements, and provisioning profiles match."
+      - "Sensitive entitlements are justified."
+      - "Managed capabilities have Apple approval where required."
+  ugc:
+    priority: P0_BLOCKER
+    apple_area: "Guideline 1.2 User-Generated Content"
+    verify:
+      - "Filtering for objectionable content."
+      - "Report offensive content."
+      - "Block abusive users."
+      - "Published support/contact info."
+      - "Timely moderation response plan."
+  sensitive_domains:
+    priority: P1_HIGH
+    apple_area: "Sensitive or regulated app categories / legal and privacy review"
+    verify:
+      - "Sensitive data collection is disclosed, including financial, health, location, identity, child, UGC, or AI-processing data where applicable."
+      - "Security, retention, export, and deletion model is documented."
+      - "No misleading legal, medical, financial, safety, or guaranteed-results claims."
+      - "Imports, uploads, account connections, document parsing, or background processing have user consent where applicable."
+      - "Third-party AI or processor data sharing is disclosed."
+      - "Licenses, entitlement approvals, geo restrictions, or regulatory evidence are ready where relevant."
+  testflight_release:
+    priority: P1_HIGH
+    apple_area: "TestFlight / release readiness"
+    verify:
+      - "Internal TestFlight completed."
+      - "External testing info ready if external testers used."
+      - "Export compliance answered."
+      - "Review notes, sample resources, and attachments prepared."
